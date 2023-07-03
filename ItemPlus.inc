@@ -41,7 +41,11 @@ bool:ItemPlus_HasAnyExtraData(Item:itemid) {
         return false;
     }
 
-    return map_valid(s_ItemExtraData[itemid]);
+    if (!map_valid(s_ItemExtraData[itemid])) {
+        return false;
+    }
+
+    return map_size(s_ItemExtraData[itemid]) > 0;
 }
 
 bool:ItemPlus_HasExtraData(Item:itemid, const key[]) {
@@ -67,6 +71,16 @@ stock bool:ItemPlus_SetExtraData(Item:itemid, const key[], value) {
         #if defined _logger_included
         Logger_Err(
             "[ItemPlus] attempted to set extra data for an invalid item",
+            Logger_I("itemid", _:itemid)
+        );
+        #endif
+        return false;
+    }
+
+    if (strlen(key) == 0) {
+        #if defined _logger_included
+        Logger_Err(
+            "[ItemPlus] attempted to set extra data with an empty key",
             Logger_I("itemid", _:itemid)
         );
         #endif
