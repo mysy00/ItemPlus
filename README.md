@@ -31,7 +31,7 @@ Happy Pawning!
 Simply install to your project:
 
 ```bash
-sampctl package install Mysy00/ItemPlus
+sampctl install Mysy00/ItemPlus
 ```
 
 Include in your code and begin using the library:
@@ -59,5 +59,5 @@ y_testing unit-tests, you should indicate to readers what to expect below here.
 To test, simply run the package:
 
 ```bash
-sampctl package run
+sampctl run
 ```
